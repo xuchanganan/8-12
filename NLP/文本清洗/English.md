@@ -1,6 +1,6 @@
 # 清洗英语文本中数据
 
-···
+```
 def clean_text(text):
     # 解决缩写问题: 
     text = re.sub(r"what's", "what is ", text)
@@ -27,4 +27,4 @@ def clean_text(text):
     text = re.sub(r"[^\w\s?!.]", " ", text)  # 将所有的除了?!.表情感以外的符号都换为 " " 
     
     return text
-···
+```
