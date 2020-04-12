@@ -19,3 +19,5 @@
 预测结果加入训练集, **在训练过程引入测试集分布。** 
 - 模型融合  
 **改变模型结构和输入数据制造差异性**
+
+[kaggple Top1](https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge/discussion/52557)
