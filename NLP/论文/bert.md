@@ -58,5 +58,5 @@ Bert中的SentenceA和SentenceB可以类比于以下几种:
 - hypothesis-premise pairs in entailment
 - 问答系统中的问题-段落对
 - 非生成问题text-null,比如文本分类和序列标注  
-
+  
 &emsp;&emsp;**在输出中,token 向量被喂到输出层做token级别的任务，比如序列标注和问答; CLS向量被喂到输出层用来做分类, 比如情感分析.**  
