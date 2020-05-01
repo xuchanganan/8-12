@@ -12,7 +12,7 @@
 &emsp;&emsp;记L为层数; H为hidden size; A为自注意力的头数.  
 &emsp;&emsp;Bert_Base是为了和GPT做比较弄的, 两者参数量相同,区别在于Bert使用的是双向的self-attention, 而GPT使用的是constrained self-attention(每个token只能看到它的左边,好像类似于Transformers decoder)  
   
-**Input/Output Representations** 
+**Input/Output Representations**  
 &emsp;&emsp;为了使Bert可以处理大量的下游任务, 我们的input需要清楚得区分出来`single sentence`和`sentences pair`在一个`token sequence`中.  
 **这里的sentence可以是任意的连续文档, 而不是一个实际的linguistic sentence**.  
 **这里的sequence指#的是Bert的input token sequence, 可以是一句sentence,也可以是sentences pair**.  
