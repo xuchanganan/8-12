@@ -36,6 +36,7 @@
 实验中, 在每个sequence(即一个样本)中随机mask 15%的WordPiece tokens, 不同于denoising auto-encoders, 我们仅仅预测masked words而不是重新预测整个输入.  
 
 **这样做虽然可以获得一个bidirectional pre-trained model, 但是缺点是:预训练和微调的不匹配**  
+
 **为了解决这个问题,并没有每次都mask掉word, 而是随机选择15%的token positions, 然后对选中的15%以80%的概率拿mask去替换, 以10%的概率不变, 以10%的概率去拿句子中的其他词替换. 然后, 该词对应的隐向量将会被用来预测原始的token, 使用的损失函数是交叉损失熵. ** 
 
 
