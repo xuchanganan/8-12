@@ -38,5 +38,24 @@
 **这样做虽然可以获得一个bidirectional pre-trained model, 但是缺点是:预训练和微调的不匹配**  
 下面是解决方法:  
 **为了解决这个问题,并没有每次都mask掉word, 而是随机选择15%的token positions, 然后对选中的15%以80%的概率拿mask去替换, 以10%的概率不变, 以10%的概率去拿句子中的其他词替换. 然后, 该词对应的隐向量将会被用来预测原始的token, 使用的损失函数是交叉损失熵**.  
+详见C2.  
+**通过实验得知:fine-tuning对不同的masking strategies有鲁棒性, 这里的mask百分比不包括0%和100%**.
 
+### Next Sentence Prediction(NSP)  
+&emsp;&emsp;为了训练一个可以理解句子间关系的模型, 谷歌预训练了一个"是否是下一个句子"的二值预测任务,该任务可以轻松从任何一个单语语料库中生成.特殊地,需要保证:B是A的下一句话的概率是50%,**输出C被用来判断B是否是A的下一句话**  
 
+待译,黄色部分未理解:  
+`in prior work, only sentence embeddings are transferred to down-stream tasks, where BERT transfers all parameters to initialize end-task model parameters.`  
+### Pre-training data
+&emsp;&emsp;预训练程序和现存的语言模型预训练基本一致.**它是很重要的,去使用一个文档级别的语料库,而不是一个打乱的语句级别的语料库,使用文档级别的语料库是为了提取长的连续的语句对.**  
+
+## Fine-tunning Bert
+&emsp;&emsp;不同于传统Transformers处理句子对(encoder+decoder), Bert将这个过程结合在了一起(所以只用到了Transformer-encoder部分),将句子对拼接在一起直接送入encoder中了.  
+对于每个任务,只需要简单将input和output送入bert即可,然后端到端微调参数.  
+
+Bert中的SentenceA和SentenceB可以类比于以下几种:  
+- sentence pairs in paraphrasing
+- hypothesis-premise pairs in entailment
+- 问答系统中的问题-段落对
+- 非生成问题text-null,比如文本分类和序列标注  
+&emsp;&emsp;**在输出中,token 向量被喂到输出层做token级别的任务，比如序列标注和问答; CLS向量被喂到输出层用来做分类, 比如情感分析.**  
