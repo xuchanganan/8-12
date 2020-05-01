@@ -26,10 +26,10 @@
 
 对于每个给定的token, 它的input representation = tokenEmbedding + segmentEmbedding + positionEmbedding. 
 
-## Pre-training BERT
+## Pre-training BERT  
 &emsp;&emsp;我们没有使用传统的left-to-right或者right-to-left语言模型去预训练Bert,而是使用了两个无监督任务:`Masked LM`和`Next Sentence Prediction(NSP)`
 
-**Masked LM**  
+### Masked LM  
 &emsp;&emsp;不幸的是, 传统的语言模型只能left-to-right 或者 right-to-left训练, **待补充**  
 为了训练一个`deep bidirectional representation`,我们简单得随机mask inputs tokens, 然后去预测`masked token`. 在这种情况下, 对应masked tokens的隐层向量被输入到softmax中去预测.  
 
