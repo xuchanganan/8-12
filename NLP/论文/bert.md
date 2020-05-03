@@ -16,7 +16,7 @@
 ### Input/Output Representations
 &emsp;&emsp;为了使Bert可以处理大量的下游任务, 我们的input需要清楚得区分出来`single sentence`和`sentences pair`在一个`token sequence`中.  
 **这里的sentence可以是任意的连续文档, 而不是一个实际的linguistic sentence**.  
-**这里的sequence指#的是Bert的input token sequence, 可以是一句sentence,也可以是sentences pair**.  
+**这里的sequence指的是Bert的input token sequence, 可以是一句sentence,也可以是sentences pair**.  
 
 &emsp;&emsp;使用的是30000个token词表的WordPiece embeddings. 每个sequence的第一个token是CLS, CLS在最后的隐层中对应的是用于分类任务的sequence向量.  
 &emsp;&emsp;语句对被打包在一个sequence中(即input token sequence).  
