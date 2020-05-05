@@ -21,8 +21,8 @@ Focal Loss for Dense Object Detection 其实就是针对类别不平衡提出的
 - 而gammer smoothly adjusts the rate at which easy examples are down-weighted, 也就是说gammer 控制了易分类样本loss的下降程度. 如果gamma=0,那么FL和CE是等价的, 实验发现gamma=2在论文实验中效果最好.  
 **we note that the implementation of the loss layer combines the sigmoid operation for computing p with the loss computation, resulting in greater numerical stability.(不大懂)**  
 
-尽管在论文实验中, 使用的是上面的公式形式,但是实验证明这个形式并不固定,附录中的其他代替公式也同样有效。  
+&emsp;&emsp;尽管在论文实验中, 使用的是上面的公式形式,但是实验证明这个形式并不固定,附录中的其他代替公式也同样有效。  
 
 #### 3.3 Class Imbalance and Model Intialization.  
 &emsp;&emsp;默认情况下, 模型初始时, 分类模型正类和负类是相同的概率.但是这样在训练初期,样本多的那类会占据主要的损失导致训练的不稳定.  
-为了解决这个问题, 引入了一个concept of a 'prior' for the value of p estimated by the model for the rate class(foreground) at the start of training. 可能是说:当少的类别概率>0.01就被判为正确吧. **这里不是很懂.待细看**
+&emsp;&emsp;为了解决这个问题, 引入了一个concept of a 'prior' for the value of p estimated by the model for the rate class(foreground) at the start of training. 可能是说:当少的类别概率>0.01就被判为正确吧. **这里不是很懂.待细看**
