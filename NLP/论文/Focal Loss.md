@@ -25,6 +25,6 @@ Focal Loss for Dense Object Detection 其实就是针对类别不平衡提出的
 
 #### 3.3 Class Imbalance and Model Intialization.  
 &emsp;&emsp;**默认情况下, 模型初始时, 分类模型正类和负类是相同的概率.但是这样在训练初期,样本多的那类会占据主要的损失导致训练的不稳定**.  
-&emsp;&emsp;为了解决这个问题, 引入了一个concept of a 'prior' for the value of p estimated by the model for the rate class(foreground) at the start of training. 可能是说:当少的类别概率>0.01就被判为正确吧. **这里不是很懂.待细看**
+&emsp;&emsp;为了解决这个问题, 引入了一个concept of a 'prior' for the value of p estimated by the model for the rate class(foreground) at the start of training. 可能是说:当少的类别概率>0.01就被判为正确吧. **这里不是很懂.待细看5.1及源码.**
 
 #### 3.4 Class Imbalance and Two-stage Detectors.
