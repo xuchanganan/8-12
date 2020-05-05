@@ -7,5 +7,10 @@ Focal Loss for Dense Object Detection 其实就是针对类别不平衡提出的
 &emsp;&emsp;该论文此外还提出了RetinaNet,目标是训练速度快,而且准确率也高.  
 
 # Focal Loss 
-一般CE损失的问题?  
+#### 一般CE损失的问题?  
 - 正如论文中蓝色曲线所示: **这个损失的一个很大的特点是: 即使是容易分类的类别(p >> 0.5)也会带来一些不小的损失, 这样在容易分类的样本很多的时候, 虽然每一个的损失都比较小, 但是容易分类的样本变多, 损失就会变大. 会overwhelm较少类别的大损失**。
+#### 3.1 Balanced Cross Entropy. 
+解决类别不平衡问题的寻常方法是: 为class 1引入一个alpha [0, 1], 而class 0则为1-alpha.  
+这里为了和Pt的写法一致,对写法进行了改写.  
+
+#### 3.2 Focal Loss Definition. 
