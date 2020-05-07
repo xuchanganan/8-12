@@ -14,3 +14,13 @@ Pre-Training with Whole Word Masking for Chinese BERT. (基于whole word masking
 | 分词文本 | 使用 语言 模型 来 预测 下 一个 词 的 probability |
 | 原始Mask输入 | 使 用 语 言 [MASK] 型 来 [MASK] 测 下 一 个 词 的 pro [MASK] ##lity |
 | 全词Mask输入 | 使 用 语 言 [MASK] [MASK] 来 [MASK] [MASK] 下 一 个 词 的 [MASK] [MASK] [MASK] |  
+
+# 使用建议:
+- 初始学习率是非常重要的一个参数（不论是BERT还是其他模型），需要根据目标任务进行调整。
+- ERNIE的最佳学习率和BERT/BERT-wwm相差较大，所以使用ERNIE时请务必调整学习率（基于以上实验结果，ERNIE需要的初始学习率较高）。
+- **由于BERT/BERT-wwm使用了维基百科数据进行训练，故它们对正式文本建模较好；而ERNIE使用了额外的百度贴吧、知道等网络数据，它对非正式文本（例如微博等）建模有优势。**
+- 在长文本建模任务上，例如阅读理解、文档分类，BERT和BERT-wwm的效果较好。
+- 如果目标任务的数据和预训练模型的领域相差较大，请在自己的数据集上进一步做预训练。
+- 如果要处理繁体中文数据，请使用BERT或者BERT-wwm。因为我们发现ERNIE的词表中几乎没有繁体中文。
+
+**这里提到的ERNIE特指百度提出的ERNIE**
