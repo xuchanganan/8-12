@@ -23,4 +23,6 @@ Pre-Training with Whole Word Masking for Chinese BERT. (基于whole word masking
 - 如果目标任务的数据和预训练模型的领域相差较大，请在自己的数据集上进一步做预训练。
 - 如果要处理繁体中文数据，请使用BERT或者BERT-wwm。因为我们发现ERNIE的词表中几乎没有繁体中文。
 
-**这里提到的ERNIE特指百度提出的ERNIE**
+**这里提到的ERNIE特指百度提出的ERNIE**  
+
+**这里的RoBERTa-wwm-ext并非RoBERTa模型,只是按照类似RoBERTa训练方式训练出的BERT模型,即RoBERTa-like BERT**
