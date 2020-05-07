@@ -54,7 +54,17 @@ batchsize = 256, steps = 1M 与 batchsize = 2K, steps = 125K 在计算资源上�
 论文作者发现,在大的batches上面训练可以提高masked language modeling的困惑度, 以及端任务的准确率.  
 
 #### 4.4 Text Encoding  
-&emsp;&emsp;Byte-Pair Encoding(BPE)是字词级别的混合, 它可以处理在自然语言语料库上的大量常见词汇, **BPE不是完整的单词，而是依赖于子单词单元，这些子单词单元是通过对训练语料库进行统计分析来提取的**  
+&emsp;&emsp;Byte-Pair Encoding(BPE)是字词级别的混合, 它可以处理在自然语言语料库上的大量常见词汇, **BPE不是完整的单词，而是依赖于subwords units，这些subword是通过对训练语料库进行统计分析来提取的**其词表大小通常在 1万到 10万之间。当对海量多样语料建模时，unicode characters占据了该词表的大部分。Radford et al.(2019)的工作中介绍了一个简单但高效的BPE， 该BPE使用字节对而非unicode characters作为子词单元。  
+
+总结下两种BPE实现方式：
+- 基于 char-level ：原始 BERT 的方式，它通过对输入文本进行启发式的词干化之后处理得到。
+- 基于 bytes-level：与 char-level 的区别在于bytes-level 使用 bytes 而不是 unicode 字符作为 sub-word 的基本单位，因此可以编码任何输入文本而不会引入 UNKOWN 标记。  
+
+当采用 bytes-level 的 BPE 之后，词表大小从3万（原始 BERT 的 char-level ）增加到5万。这分别为 BERT-base和 BERT-large增加了1500万和2000万额外的参数。  
+
+早期的实验揭露了character-level BPE和byte-level BPE的区别, 发现这两种只有些轻微不同, byte-level可能在一些任务上可能会轻微损坏点performance. **但是作者相信universal encoding scheme比轻微的下降更重要.（为什么这么想？）** 
+
+
 
 
 # Introduce
