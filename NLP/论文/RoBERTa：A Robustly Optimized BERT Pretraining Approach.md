@@ -54,6 +54,7 @@ batchsize = 256, steps = 1M 与 batchsize = 2K, steps = 125K 在计算资源上�
 论文作者发现,在大的batches上面训练可以提高masked language modeling的困惑度, 以及端任务的准确率.  
 
 #### 4.4 Text Encoding  
+&emsp;&emsp;Byte-Pair Encoding(BPE)是字词级别的混合, 它可以处理在自然语言语料库上的大量常见词汇, **BPE不是完整的单词，而是依赖于子单词单元，这些子单词单元是通过对训练语料库进行统计分析来提取的**  
 
 
 # Introduce
