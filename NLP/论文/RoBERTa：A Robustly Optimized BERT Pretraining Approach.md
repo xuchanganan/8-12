@@ -50,6 +50,11 @@ pass...
 #### 4.3 Training with large batches  
 **过去在神经网络机器翻译的工作也表明了:以一个非常大的mini-batches训练可以提高优化速度和端任务的表现, 前提是学习率也被正确的增加. 最近的工作也表明BERT也有这样的特性**  
 
+batchsize = 256, steps = 1M 与 batchsize = 2K, steps = 125K 在计算资源上是等价的, 但是效果却是batchsize要好.  
+论文作者发现,在大的batches上面训练可以提高masked language modeling的困惑度, 以及端任务的准确率.  
+
+#### 4.4 Text Encoding  
+
 
 # Introduce
 这里主要讲的是RoBERTa较历史研究做了哪些改进，以及BERT的一些问题.  
