@@ -1,5 +1,5 @@
 # Abstract  
-EDA: easy augmentation techniques for boosting performance on text classification tasks.  
+EDA: easy augmentation techniques for boosting performance on **text classification tasks**.  
 EDA包括:  
 - 同义词替换.  
 - 随机插入.  
