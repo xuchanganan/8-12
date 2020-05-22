@@ -31,7 +31,7 @@
 &emsp;&emsp;我们没有使用传统的left-to-right或者right-to-left语言模型去预训练Bert,而是使用了两个无监督任务:`Masked LM`和`Next Sentence Prediction(NSP)`
 
 ### Masked LM  
-&emsp;&emsp;不幸的是, 传统的语言模型只能left-to-right 或者 right-to-left训练, **待补充,难道Word2vec不是双向的么？**  
+&emsp;&emsp;不幸的是, 传统的语言模型只能left-to-right 或者 right-to-left训练, **待补充,难道Word2vec不是双向的么？可能因为不是深层的吧**  
 为了训练一个`deep bidirectional representation`,我们简单得随机mask inputs tokens, 然后去预测`masked token`. 在这种情况下, 对应masked tokens的隐层向量被输入到softmax中去预测.  
 
 实验中, 在每个sequence(即一个样本)中随机mask 15%的WordPiece tokens, 不同于denoising auto-encoders, 我们仅仅预测masked words而不是重新预测整个输入.  
