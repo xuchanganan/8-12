@@ -32,9 +32,5 @@ class Solution:
                     re_max = max(cur_len, re_max) 
         
         return re_max 
-                
-
-        
-
-
+               
 ```
