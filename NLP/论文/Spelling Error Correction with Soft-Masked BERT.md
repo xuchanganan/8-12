@@ -6,8 +6,8 @@
 &emsp;&emsp;中文拼写错误纠正(CSC)可以看作是**等长**的序列标注任务: 将input中不正确的字词用正确的替换,从而得到输出. 该任务是比较容易的,然而, 在某种意义上, 仅仅是几个字词需要被替换, 而其他的字词需要直接copy下来。  
 &emsp;&emsp;目前做CSC的state-of-art方法是使用Bert完成, 实验表明, **如果指定错误字词,那么纠错会表现得更好_指Bert-Finetune+Force吧,而基于原始Bert的方法倾向于不做任何修改或者说仅仅只是copy了原始字符.论文作者的解释是:Bert在预训练期间只mask了15%的词, 所以没有学到错误检测.因此需要设计新的模型**.
 ## 2.2 模型.
-&emsp;&emsp;检测网络是用了Bi-GRU, 纠错网络是用了BERT.
-&emsp;&emsp;特殊的是, 作者创造了一种embedding方式: 为输入句子中的每个character创建一个embedding作为输入的embedding(our method first creates an embedding for each character in the input sentence, referred to as input embedding).**BERT模型的最后一层包含了一个所有character的softmax function**.
+&emsp;&emsp;检测网络是用了Bi-GRU, 纠错网络是用了BERT.  
+&emsp;&emsp;特殊的是, 作者第一次创造了一种embedding方式: 为输入句子中的每个character创建一个embedding作为输入的embedding(our method first creates an embedding for each character in the input sentence, referred to as input embedding).**BERT模型的最后一层包含了一个所有character的softmax function**.
 ## 2.3 检测网络
 ## 2.4 纠错网络
 &emsp;&emsp;纠错网络是一个基于bert的序列化的多分类标注模型,输入是soft-masked sequence embeddings(e1', e2', ..en')而输出是字序列(y1, y2,...,yn).  
