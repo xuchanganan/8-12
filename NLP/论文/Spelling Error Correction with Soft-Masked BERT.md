@@ -39,3 +39,7 @@
 - 问题一:  
 &emsp;&emsp;2.5 Learning中provided that Bert is pre-trained and training data is given .. 这里的trining data应该是fine-tune的data吧, 毕竟全文其实都没有提预训练方式.  
 - 问题二:
+
+# 小结. 
+&emsp;&emsp;所以说soft-masked bert应该只是做了finetune, 因为mask只不过是个代表错误的输入, 并没有进行特殊预训练, 也没有修改mask策略.  
+&emsp;&emsp;但是小米asr应该只是pre-train，因为它改进的是mask策略, 而且初始f1值那么低. 
