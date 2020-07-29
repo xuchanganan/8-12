@@ -14,11 +14,12 @@
 &emsp;&emsp;作者将bert最后一层的hidden sequence定义为Hc = (h1c, h2c, ..., hnc)  
 &emsp;&emsp;对于序列中的每个character, 纠错概率被定义为Pc(yi = j|X), 意思是chracter xi被纠正为**候选集中yj的概率**.  
 ## 2.5 Learning
-&emsp;&emsp;BERT是经过预训练的并且训练数据是类似于{(X1, Y1), (X2, Y2),...,(Xn,Yn)}的数据对(bert is pre-trained and training data is given which .. **这个training data是谁的呀.**), 其中X是包含错误的, Y是没有错误的.**一种生成数据的方法是：对于一个Y1, 利用confusion table生成若干个X**.  
+&emsp;&emsp;Soft-Masked BERT的学习是端到端的, 假设Bert是经过预训练的并且训练数据是类似于{(X1, Y1), (X2, Y2),...,(Xn,Yn)}的数据对(bert is pre-trained and training data is given which .. **这个training data是谁的呀.**), 其中X是包含错误的, Y是没有错误的.**一种生成数据的方法是：对于一个Y1, 利用confusion table生成若干个X**.  
 
 # 3.Experimental Results.
 ## 3.1 Datasets.
-&emsp;&emsp;为了确保数据中包含大量的不正确的语句, 特意采样的低质量文本。**作者三个人做了5轮标注:仔细纠正titles中的拼写错误**  
+&emsp;&emsp;作者使用了SIGHAN数据集.  
+&emsp;&emsp;**为了测试和部署**,作者同时创造了更大的数据集, 是采样于头条的.为了确保数据中包含大量的不正确的语句, 特意采样的低质量文本。**作者三个人做了5轮标注:仔细纠正titles中的拼写错误**  
 &emsp;&emsp;作者创造了一个困惑词表:每个字与若干个可能混淆的词关联, 随机得替换了15%字去生成错误,其中80%是利用confusion table生成的, 而20%是随机替换的.  
 
 ## 3.4 Main Results
@@ -32,3 +33,9 @@
 一个字是否错误的概率是随机生成的between 0-1.  
 - Bert-Finetune+Force:  
 该模型被视为一个上界, 甚至超过论文模型, 该方法中, 让Bert-Finetue仅仅去预测错误的位置.并且从候选集中选择一个字词替换. 
+
+
+# 个人疑问.
+- 问题一:  
+&emsp;&emsp;2.5 Learning中provided that Bert is pre-trained and training data is given .. 这里的trining data应该是fine-tune的data吧, 毕竟全文其实都没有提预训练方式.  
+- 问题二:
