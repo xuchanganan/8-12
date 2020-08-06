@@ -35,5 +35,5 @@
 # 3.实验.
 
 ## 3.2实现细节. 
-&emsp;&emsp;用NLTK对句子分词, 全部小写, 移除所有标点, 没有限制最大的seq_length, 一个batch中所有的seq 被 padding到这个batch最长的那个长度. word_embedding是用840B-300d的GLOVE初始化的, 而且训练中不变, 没有出现的单词embedding被初始化为0, 也固定不变. 每个全连接层或卷积层前都有一个drop out. 预测层是2层的神经网络. 前向反馈网络激活函数都是gelu. blocks是1~3个, 卷积层也是1~3个.
+&emsp;&emsp;用NLTK对句子分词, 全部小写, 移除所有标点, 没有限制最大的seq_length, 一个batch中所有的seq 被 padding到这个batch最长的那个长度. word_embedding是用840B-300d的GLOVE初始化的, 而且训练中不变, 没有出现的单词embedding被初始化为0, 也固定不变. 每个全连接层或卷积层前都有一个drop out. 预测层是2层的神经网络. 前向反馈网络激活函数都是gelu. blocks是1-3个, 卷积层也是1-3个.
 
