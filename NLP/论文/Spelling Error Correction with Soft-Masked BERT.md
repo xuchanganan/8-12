@@ -8,7 +8,8 @@
 ## 2.2 模型.
 &emsp;&emsp;检测网络是用了Bi-GRU, 纠错网络是用了BERT.  
 &emsp;&emsp;特殊的是, 作者第一次创造了一种embedding方式: 为输入句子中的每个character创建一个embedding作为输入的embedding(our method first creates an embedding for each character in the input sentence, referred to as input embedding).**BERT模型的最后一层包含了一个所有character的softmax function**.
-## 2.3 检测网络
+## 2.3 检测网络  
+&emsp;&emsp;检测网络为双向GRU, 输出每个文本中每个位置错误的概率p，这个是要用到纠错网络中的, 将pxmask_embedding+(1-p)xembedding 作为bert的输出
 ## 2.4 纠错网络
 &emsp;&emsp;纠错网络是一个基于bert的序列化的多分类标注模型,输入是soft-masked sequence embeddings(e1', e2', ..en')而输出是字序列(y1, y2,...,yn).  
 &emsp;&emsp;作者将bert最后一层的hidden sequence定义为Hc = (h1c, h2c, ..., hnc)  
