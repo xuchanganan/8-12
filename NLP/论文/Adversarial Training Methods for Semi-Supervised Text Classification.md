@@ -4,6 +4,12 @@
 &emsp;&emsp;因此我们在循环神经网络中的word embeddings上做扰动，而不是原始输入本身上，通过该种方式将adversariabl和virtual adversarial训练应用到了文本领域.  
 &emsp;&emsp;该方法在多个半监督任务和完全的监督任务基准中都取得了不错的结果.在可视化结果中可以看到**习得的word embeddings在质量上有提升,而且在训练的时候,模型也不大会倾向于过拟合**.  
 
+# 2. Model
+&emsp;&emsp;需要注意的是：扰动是有界范数norm,在具有很大范数norm的embeddings上添加有界范数，这样的扰动并不明显，为了防止这种情况出现, 当我们应用adversarial和virtual adversarial训练上面的网络时, 我们用规范后的embedding vk代替原始的embedding vk.
+
+# 3. Adversarial and virtual adversarial training. 
+
+
 
 
 
