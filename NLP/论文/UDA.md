@@ -10,3 +10,10 @@
 &emsp;&emsp;在该份工作中，作者探索了consisency training中噪声注入所扮演的角色, 并且调研了先进的数据扩增方法：具体来说，在监督学习中效果好的，在半监督学习中效果一样也好，这说明在监督学习中数据扩展的表现和他们在consistency training中的表现有着很强的相关性。因此，作者建议使用先进的数据扩增方式去替换consistency training中的传统的噪声注入方法.  
 &emsp;&emsp;作者发现:当标签数据很大的时候, UDA同样有效: 比如ImageNet, 当使用全部标签数据和1.3M的无标签数据时，acc from 78.43 to 79.05.
 
+作者认为贡献主要如下：  
+- 说明了：在监督学习中好的数据扩展方法，在consistency enforcing半监督学习中可以充当更高级的噪声来源  
+- UDA可以匹配，甚至超过更多数据的监督学习  
+- UDA可以和迁移学习很好地迁移，比如BERT  
+- 针对UDA为何能提高分类效果？数据扩增起什么样的角色？给出了解释。
+
+# 2.Unsupervised data augmentation(UDA)  
