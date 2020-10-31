@@ -12,7 +12,7 @@
 - 不去加深或拓宽某个主题的聊天是无聊的, 因此生成一些不仅相关, 而且话题上更深的回复是个难题.  
 - 大规模数据集  
 
-为了解决上面的问题, 论文作者提出了DAWnet模型.  
+&emsp;&emsp;为了解决上面的问题, 论文作者提出了DAWnet模型.  
 - 首先DAWnet将对话划段  
 - 全局的channel首先将给定的上下文encoder为一个embedding vector,该向量包含了所有的历史对话信息.  
 - DAWnet从context中提取了全部的关键词,**训练时关键词其实是事先提取好的, 属于监督学习, 但预测的时候没有.**, 在此关键词的基础上, wide channel使用了一个基于attention机制的RNN网络去预测更wider的关键词. 更广泛的关键词意味着可能没有在given context中出现, 并且可以帮助扩宽主题.  
@@ -20,12 +20,12 @@
 - 最后使用contextual encoder的输出、在deep channel中提前选择的keywords、和wide channel中预测的keywords, 然后做一个decoder来生成一个有意义的回复.  
 
 # 3.Model
-模型首先将对话分为多段, 并且从历史信息中提取出一些关键词.  
-然后模型将context和它的关键词喂入3个平行channels  
+&emsp;&emsp;模型首先将对话分为多段, 并且从历史信息中提取出一些关键词.  
+&emsp;&emsp;然后模型将context和它的关键词喂入3个平行channels  
 - global 编码context为一个embedding vector.  
 - wide 预测更广的关键词.  
 - deep channel 基于context和它的keywords选择更深的keywords.  
-最后模型使用了一个attention机制去加权context以及keywords，然后将它们喂入RNN decoder中用来生成response.  
+&emsp;&emsp;最后模型使用了一个attention机制去加权context以及keywords，然后将它们喂入RNN decoder中用来生成response.  
 
 ## 3.1 Keyword Extraction
 &emsp;&emsp;使用的是TF-IDF指标去提取一个context中的keywords.  
