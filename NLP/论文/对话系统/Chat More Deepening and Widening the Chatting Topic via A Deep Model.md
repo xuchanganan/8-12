@@ -1,8 +1,8 @@
 # ABSTRACT
 &emsp;&emsp;论文研究的是**开放领域的**，通过**生成回复**来做的**多轮对话系统**, 论文的目的是为了拓宽，深入聊天主题。为此使用了3个channel:global channel, wide channel, deep channel.  
-&emsp;&emsp;global channel编码了完整的历史信息  
-&emsp;&emsp;wide channel使用了一个基于attention机制的循环神经网络来预测没有出现在历史信息中的keywords关键词.  
-&emsp;&emsp;deep channel使用了多层感知机选择一些keywords来in-depth discussion.  
+&emsp;&emsp;**global channel**编码了完整的历史信息  
+&emsp;&emsp;**wide channel**使用了一个基于attention机制的循环神经网络来预测没有出现在历史信息中的keywords关键词.  
+&emsp;&emsp;**deep channel**使用了多层感知机选择一些keywords来in-depth discussion.  
 &emsp;&emsp;最后模型融合了3个channel的output去生成合适的responses.  
 
 # Introduction
