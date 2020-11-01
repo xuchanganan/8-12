@@ -35,5 +35,20 @@
 ## 3.2 Global Channel
 &emsp;&emsp;利用多层RNN将给定的上下文信息编码为一个vector.  
 
+## 3.3 Wide Channel
+&emsp;&emsp;该channel训练了一个基于attention的rnn模型去预测extend topics的关键词, 对于给定向量c, 用于关键词预测的RNN以encoder的最后一个hidden state初始化, 并且根据下述方式进行更新.  
+st = f(st-1, [ekt-1p, ct]), ekt-1p是在t-1时刻预测关键词的embedding.ct是t时刻通过attention机制得到的vector, [ekt-1p, ct]是两个向量的拼接,st是RNN在时刻t的隐层状态.
+&emsp;&emsp;公式解释见Notability.  
+&emsp;&emsp;在这个channel下, decoder实际得预测了一些更广的关键词, 这些关键词可以被喂入decoder中用作回复生成.
 
+## 3.4 Deep Channel.
+&emsp;&emsp;目标是从context中**选择一些有用的keywords**去加深聊天话题, 通过用一个带RELU激活函数的MLP模型去计算keywords的权重, 输入是encoder最后一个hidden state以及所有keywords的embedding vectors.输出由下列公式给出.  
+&emsp;&emsp;l0 = [ht, ek1c, ek2c, ..., ekmc]
+&emsp;&emsp;q = MLP(l0)
+
+&emsp;&emsp;选择的keywords的向量通过mi = qi* Wt * ekic来更新,这部分选择的keywords将会被送入decoder中去生成回复.
+
+## 3.5 Decoder.
+&emsp;&emsp;用于生成回复的decoder RNN和用于生成keyword的decoder RNN其实是相似的, 但是vector向量c是不同的.  
+&emsp;&emsp;公式详见Notability.  
 
