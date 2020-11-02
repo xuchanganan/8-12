@@ -42,7 +42,7 @@ st = f(st-1, [ekt-1p, ct]), ekt-1p是在t-1时刻预测关键词的embedding.ct�
 &emsp;&emsp;在这个channel下, decoder实际得预测了一些更广的关键词, 这些关键词可以被喂入decoder中用作回复生成.
 
 ## 3.4 Deep Channel.
-&emsp;&emsp;目标是从context中**选择一些有用的keywords**去加深聊天话题, 通过用一个带RELU激活函数的MLP模型去计算keywords的权重, 输入是encoder最后一个hidden state以及所有keywords的embedding vectors.输出由下列公式给出.  
+&emsp;&emsp;目标是从contextual keywords(也就是从文本中事先提取的)**选择一些有用的keywords**去加深聊天话题, 通过用一个带RELU激活函数的MLP模型去计算keywords的权重, 输入是encoder最后一个hidden state以及所有keywords的embedding vectors.输出由下列公式给出.  
 &emsp;&emsp;l0 = [ht, ek1c, ek2c, ..., ekmc]
 &emsp;&emsp;q = MLP(l0)
 
