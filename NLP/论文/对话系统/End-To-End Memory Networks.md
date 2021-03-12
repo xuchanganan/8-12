@@ -1,5 +1,5 @@
 &emsp;&emsp;15年的论文, 利用记忆网络做单轮对话.  
-代码地址: https://github.com/facebook/MemNN.
+&emsp;&emsp;代码地址: https://github.com/facebook/MemNN.
 
 # Abstract
 &emsp;&emsp;该模型是Memory Network的形式, 但是不像Memory Network需要有监督得处理每一层,由于原始的Memory Network无法反向传播. 但该论文是端到端的训练的, 所以在训练时需要更少的监督.  
